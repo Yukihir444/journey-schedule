@@ -2,7 +2,14 @@ import React, { useState } from 'react';
 import './App.css';
 
 function App() {
-  const [openDay, setOpenDay] = useState('WED');
+  
+  const getCurrentDayAbbr = () => {
+    const days = ['SUN','MON','TUE','WED','THU','FRI','SAT'] ;
+    const today = new Date();
+    return days[today.getDay()];
+  }
+
+  const [openDay, setOpenDay] = useState(getCurrentDayAbbr());
 
   const scheduleData = [
     {
