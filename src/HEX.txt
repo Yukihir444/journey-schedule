@@ -1,0 +1,7 @@
+MON: c4ac08 , f6f77f
+TUE: bd08c4 , d994f3
+WED: d994f3 , 98f77f
+THU: c44a08 , f7cb7f
+FRI: 0869c4 , 7fa6f7
+SAT: 9108c4 , 9108c4
+SUN: c40808 , c40808

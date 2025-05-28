@@ -1,42 +1,150 @@
-#root {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+body {
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: linear-gradient(180deg, #333333 0%, #1A1A1A 100%); /* Gradient background ของหน้าเว็บ */
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.App {
   text-align: center;
+  width: 100%;
+  max-width: 600px;
+  padding: 20px;
+  box-sizing: border-box;
 }
 
-.logo {
-  height: 6em;
-  padding: 1.5em;
-  will-change: filter;
-  transition: filter 300ms;
-}
-.logo:hover {
-  filter: drop-shadow(0 0 2em #646cffaa);
-}
-.logo.react:hover {
-  filter: drop-shadow(0 0 2em #61dafbaa);
+.App-header h1 {
+  font-size: 1.8em;
+  margin-bottom: 30px;
+  color: #f0f0f0;
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* เพิ่มเงาให้ตัวอักษร */
 }
 
-@keyframes logo-spin {
+.schedule-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.day-card {
+  background-color: #3a3f47; /* สีพื้นหลังของการ์ดแต่ละวัน */
+  border-radius: 8px;
+  overflow: hidden; /* สำคัญสำหรับการซ่อนเนื้อหาเมื่อ collapse */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* เพิ่มเงาให้การ์ด */
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth transition สำหรับการ์ด */
+}
+
+/* ทำให้การ์ดที่เปิดอยู่โดดเด่นขึ้นเล็กน้อย */
+.day-card.is-open {
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+    transform: translateY(-2px); /* ยกการ์ดขึ้นเล็กน้อย */
+}
+
+.day-button {
+  width: 100%;
+  padding: 15px 20px;
+  background-color: #4a4f58; /* สีพื้นหลังของปุ่ม ยังคงเป็นสีทึบ */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 1.1em;
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  transition: background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
+              transform 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  outline: none;
+}
+
+.day-button:hover {
+  background-color: #5a5f68; /* สีเข้มขึ้นเล็กน้อยเมื่อ hover */
+  transform: translateY(-3px); /* ยกปุ่มขึ้นเล็กน้อย */
+}
+
+.day-button:active {
+  transform: translateY(0); /* ปุ่มกดลงเล็กน้อยเมื่อคลิก */
+  background-color: #3a3f47;
+}
+
+
+.day-text {
+  /* นี่คือส่วนสำคัญสำหรับการทำ gradient บนข้อความ */
+  background-clip: text;
+  -webkit-background-clip: text; /* สำหรับ Safari */
+  color: transparent; /* ทำให้สีข้อความโปร่งใส เพื่อให้เห็น background */
+  -webkit-text-fill-color: transparent; /* สำหรับ Safari */
+  display: inline-block; /* สำคัญเพื่อให้ background-clip ทำงานถูกต้อง */
+  /* backgroundImage ถูกกำหนดจาก App.js โดยตรง */
+}
+
+
+.arrow-icon {
+  font-size: 1.2em;
+  color: #fff;
+  text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* แอนิเมชันสำหรับลูกศร */
+}
+
+/* หมุนลูกศรเมื่อเปิดอยู่ */
+.day-card.is-open .arrow-icon {
+  transform: rotate(180deg);
+}
+
+.events-list {
+  padding: 15px 20px;
+  background-color: #2e323a;
+  border-top: 1px solid #4a4f58;
+  text-align: left;
+  /* animation: fadeIn 0.3s ease-out; <- จะใช้ animation บน event-item แต่ละตัวแทน */
+}
+
+.event-item {
+  margin-bottom: 8px;
+  font-size: 0.95em;
+  color: #e0e0e0;
+  opacity: 0; /* เริ่มต้นซ่อน */
+  transform: translateY(10px); /* เริ่มต้นอยู่ต่ำกว่าปกติ */
+  animation: fadeInSlideUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* แอนิเมชันการปรากฏ */
+}
+
+.event-item:last-child {
+  margin-bottom: 0;
+}
+
+.no-events {
+  font-style: italic;
+  color: #aaa;
+  animation: fadeIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* fade-in สำหรับข้อความไม่มีกิจกรรม */
+}
+
+/* Keyframe for fade-in animation (ปรับปรุง) */
+@keyframes fadeIn {
   from {
-    transform: rotate(0deg);
+    opacity: 0;
   }
   to {
-    transform: rotate(360deg);
+    opacity: 1;
   }
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  a:nth-of-type(2) .logo {
-    animation: logo-spin infinite 20s linear;
+/* Keyframe สำหรับการปรากฏพร้อมเลื่อนขึ้น */
+@keyframes fadeInSlideUp {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
   }
-}
-
-.card {
-  padding: 2em;
-}
-
-.read-the-docs {
-  color: #888;
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
