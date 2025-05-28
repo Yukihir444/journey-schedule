@@ -1,3 +1,7 @@
+:root {
+  font-size: 16px; /* กำหนด base font-size สำหรับ rem */
+}
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -5,60 +9,61 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: linear-gradient(180deg, #333333 0%, #1A1A1A 100%); /* Gradient background ของหน้าเว็บ */
+  background: linear-gradient(180deg, #333333 0%, #1A1A1A 100%);
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  padding: 1rem; /* เพิ่ม padding รอบๆ body เพื่อให้มีขอบบนมือถือ */
+  box-sizing: border-box; /* สำคัญเพื่อให้ padding ไม่เพิ่มความกว้างเกิน */
 }
 
 .App {
   text-align: center;
   width: 100%;
-  max-width: 600px;
-  padding: 20px;
+  max-width: 37.5rem; /* 600px / 16px = 37.5rem */
+  padding: 1.25rem; /* 20px / 16px = 1.25rem */
   box-sizing: border-box;
 }
 
 .App-header h1 {
-  font-size: 1.8em;
-  margin-bottom: 30px;
+  font-size: 1.5rem; /* 24px / 16px = 1.5rem */
+  margin-bottom: 1.875rem; /* 30px / 16px = 1.875rem */
   color: #f0f0f0;
-  text-shadow: 1px 1px 3px rgba(0,0,0,0.5); /* เพิ่มเงาให้ตัวอักษร */
+  text-shadow: 1px 1px 3px rgba(0,0,0,0.5);
 }
 
 .schedule-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 0.625rem; /* 10px / 16px = 0.625rem */
 }
 
 .day-card {
-  background-color: #3a3f47; /* สีพื้นหลังของการ์ดแต่ละวัน */
-  border-radius: 8px;
-  overflow: hidden; /* สำคัญสำหรับการซ่อนเนื้อหาเมื่อ collapse */
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* เพิ่มเงาให้การ์ด */
-  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* Smooth transition สำหรับการ์ด */
+  background-color: #3a3f47;
+  border-radius: 0.5rem; /* 8px / 16px = 0.5rem */
+  overflow: hidden;
+  box-shadow: 0 0.25rem 0.5rem rgba(0, 0, 0, 0.2); /* 4px, 8px */
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* ทำให้การ์ดที่เปิดอยู่โดดเด่นขึ้นเล็กน้อย */
 .day-card.is-open {
-    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
-    transform: translateY(-2px); /* ยกการ์ดขึ้นเล็กน้อย */
+    box-shadow: 0 0.375rem 0.75rem rgba(0, 0, 0, 0.3); /* 6px, 12px */
+    transform: translateY(-0.125rem); /* -2px */
 }
 
 .day-button {
   width: 100%;
-  padding: 15px 20px;
-  background-color: #4a4f58; /* สีพื้นหลังของปุ่ม ยังคงเป็นสีทึบ */
+  padding: 0.9375rem 1.25rem; /* 15px, 20px */
+  background-color: #4a4f58;
   border: none;
-  border-radius: 8px;
+  border-radius: 0.5rem; /* 8px */
   cursor: pointer;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-size: 1.1em;
+  font-size: 1.1rem; /* ใช้ rem */
   font-weight: bold;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
   transition: background-color 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94),
@@ -67,54 +72,48 @@ body {
 }
 
 .day-button:hover {
-  background-color: #5a5f68; /* สีเข้มขึ้นเล็กน้อยเมื่อ hover */
-  transform: translateY(-3px); /* ยกปุ่มขึ้นเล็กน้อย */
+  background-color: #5a5f68;
+  transform: translateY(-0.1875rem); /* -3px */
 }
 
 .day-button:active {
-  transform: translateY(0); /* ปุ่มกดลงเล็กน้อยเมื่อคลิก */
+  transform: translateY(0);
   background-color: #3a3f47;
 }
 
-
 .day-text {
-  /* นี่คือส่วนสำคัญสำหรับการทำ gradient บนข้อความ */
   background-clip: text;
-  -webkit-background-clip: text; /* สำหรับ Safari */
-  color: transparent; /* ทำให้สีข้อความโปร่งใส เพื่อให้เห็น background */
-  -webkit-text-fill-color: transparent; /* สำหรับ Safari */
-  display: inline-block; /* สำคัญเพื่อให้ background-clip ทำงานถูกต้อง */
-  /* backgroundImage ถูกกำหนดจาก App.js โดยตรง */
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+  display: inline-block;
 }
-
 
 .arrow-icon {
-  font-size: 1.2em;
+  font-size: 1.2rem; /* ใช้ rem */
   color: #fff;
   text-shadow: 1px 1px 2px rgba(0,0,0,0.3);
-  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94); /* แอนิเมชันสำหรับลูกศร */
+  transition: transform 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
 }
 
-/* หมุนลูกศรเมื่อเปิดอยู่ */
 .day-card.is-open .arrow-icon {
   transform: rotate(180deg);
 }
 
 .events-list {
-  padding: 15px 20px;
+  padding: 0.9375rem 1.25rem; /* 15px, 20px */
   background-color: #2e323a;
   border-top: 1px solid #4a4f58;
   text-align: left;
-  /* animation: fadeIn 0.3s ease-out; <- จะใช้ animation บน event-item แต่ละตัวแทน */
 }
 
 .event-item {
-  margin-bottom: 8px;
-  font-size: 0.95em;
+  margin-bottom: 0.5rem; /* 8px */
+  font-size: 0.95rem; /* ใช้ rem */
   color: #e0e0e0;
-  opacity: 0; /* เริ่มต้นซ่อน */
-  transform: translateY(10px); /* เริ่มต้นอยู่ต่ำกว่าปกติ */
-  animation: fadeInSlideUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* แอนิเมชันการปรากฏ */
+  opacity: 0;
+  transform: translateY(0.625rem); /* 10px */
+  animation: fadeInSlideUp 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
 .event-item:last-child {
@@ -124,10 +123,9 @@ body {
 .no-events {
   font-style: italic;
   color: #aaa;
-  animation: fadeIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards; /* fade-in สำหรับข้อความไม่มีกิจกรรม */
+  animation: fadeIn 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
 }
 
-/* Keyframe for fade-in animation (ปรับปรุง) */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -137,14 +135,57 @@ body {
   }
 }
 
-/* Keyframe สำหรับการปรากฏพร้อมเลื่อนขึ้น */
 @keyframes fadeInSlideUp {
   from {
     opacity: 0;
-    transform: translateY(10px);
+    transform: translateY(0.625rem); /* 10px */
   }
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* --- Media Queries for smaller screens --- */
+@media (max-width: 480px) { /* สำหรับมือถือขนาดเล็ก */
+  :root {
+    font-size: 15px; /* ลด font-size ฐานเล็กน้อยบนมือถือ */
+  }
+
+  .App-header h1 {
+    font-size: 1.3rem; /* ปรับขนาด H1 เล็กลง */
+    margin-bottom: 1.5rem;
+  }
+
+  .day-button {
+    padding: 0.8rem 1rem; /* ลด padding ปุ่ม */
+    font-size: 1rem; /* ลดขนาด font ปุ่ม */
+  }
+
+  .arrow-icon {
+    font-size: 1.1rem;
+  }
+
+  .events-list {
+    padding: 0.8rem 1rem; /* ลด padding รายการกิจกรรม */
+  }
+
+  .event-item {
+    font-size: 0.9rem; /* ลดขนาด font กิจกรรม */
+  }
+}
+
+/* --- Media Queries for larger screens (optional, if you want different layout on desktop) --- */
+@media (min-width: 768px) {
+  .App {
+    padding: 2rem;
+  }
+
+  .App-header h1 {
+    font-size: 2rem;
+  }
+
+  .day-button {
+    font-size: 1.2rem;
   }
 }
