@@ -1,5 +1,5 @@
 :root {
-  font-size: 16px; /* กำหนด base font-size สำหรับ rem */
+  font-size: 16px; 
 }
 
 body {
@@ -15,8 +15,8 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
-  padding: 1rem; /* เพิ่ม padding รอบๆ body เพื่อให้มีขอบบนมือถือ */
-  box-sizing: border-box; /* สำคัญเพื่อให้ padding ไม่เพิ่มความกว้างเกิน */
+  padding: 1rem; 
+  box-sizing: border-box; 
 }
 
 .App {
@@ -147,19 +147,19 @@ body {
 }
 
 /* --- Media Queries for smaller screens --- */
-@media (max-width: 480px) { /* สำหรับมือถือขนาดเล็ก */
+@media (max-width: 480px) { 
   :root {
-    font-size: 15px; /* ลด font-size ฐานเล็กน้อยบนมือถือ */
+    font-size: 15px; 
   }
 
   .App-header h1 {
-    font-size: 1.3rem; /* ปรับขนาด H1 เล็กลง */
+    font-size: 1.3rem; 
     margin-bottom: 1.5rem;
   }
 
   .day-button {
-    padding: 0.8rem 1rem; /* ลด padding ปุ่ม */
-    font-size: 1rem; /* ลดขนาด font ปุ่ม */
+    padding: 0.8rem 1rem; 
+    font-size: 1rem; 
   }
 
   .arrow-icon {
@@ -167,11 +167,11 @@ body {
   }
 
   .events-list {
-    padding: 0.8rem 1rem; /* ลด padding รายการกิจกรรม */
+    padding: 0.8rem 1rem; 
   }
 
   .event-item {
-    font-size: 0.9rem; /* ลดขนาด font กิจกรรม */
+    font-size: 0.9rem; 
   }
 }
 
