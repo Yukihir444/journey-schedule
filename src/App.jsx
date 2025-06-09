@@ -58,8 +58,7 @@ function App() {
       day: 'SUN',
       colors: ['#c40808', '#c40808'],
       events: [
-        { time: '22.30 - 00.00', place: 'Brick Bar' },
-        { time: '00.30 - 01.55', place: 'XYZ Pinklao' }
+        { time: '22.30 - 00.00', place: 'Brick Bar' }
       ]
     },
   ];
