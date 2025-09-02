@@ -51,7 +51,7 @@ function App() {
       colors: ['#9108c4', '#9108c4'],
       events: [
         { time: '20.30 - 22.00', place: 'Chilling House in TOKYO' },
-        { time: '00.00 - 01.30', place: 'ชงเจริญ โอสด The Crystal' }
+        { time: '00.00 - 01.30', place: 'ชงเจริญ Groove Central World' }
       ]
     },
     {
